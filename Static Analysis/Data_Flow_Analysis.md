@@ -79,3 +79,61 @@ Reaching Definitions Analysis算法
 
 当IN没有变化，OUT也就不会变化，反之亦然
 
+### Live Variables Analysis(活跃变量分析)
+
+#### 定义
+
+变量v，从p点开始，在CFG中，存在至少一条路径使用了它(言外之意: v不应该在被使用前被重新定义)
+
+<img width="501" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/4b2b5a97-df60-4fcb-8748-4d950f5802a8">
+
+先use再define，IN\[B\] 就不为空
+
+#### Transfer Function 
+
+<img width="263" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/efa7e064-a65b-4814-9235-743935cb4b77">
+
+#### 算法(后向)
+
+<img width="501" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/00618d75-debe-4e21-8aa1-2167dc90cd47">
+
+> 一般情况下may analysis初始化为空，must analysis初始化是all
+
+🌰
+
+<img width="501" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/42f4cb3e-6687-4403-be13-a2167370b0b5">
+
+### Available Expressions Analysis(可行表达式分析) 
+
+#### 定义
+
+**Must Analysis**
+
+如果表达式*x op y*对于程序点p来说满足下面两点
+1. 所有以p为入口点的路径都经过*x op y*
+2. 在*x op y*之后*x*和*y*都没有再被定义
+
+#### Transfer Function
+
+<img width="270" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/5966bbd0-dc8c-4f61-91c3-a3fb38a5f319">
+
+
+Rule
+
+<img width="492" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/06b03ee7-e880-4b2b-bd10-c270f1403617">
+
+🌰
+
+<img width="190" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/41d486d6-e07c-49e5-9058-2b26d26bf55d">
+
+上面这个🌰满足。。。
+
+#### 算法
+
+<img width="501" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/b219977b-6eb8-403d-a30d-6aa93d3e9253">
+
+🌰
+
+<img width="501" alt="image" src="https://github.com/upaskun/Notes/assets/82031259/300cdc1e-161f-41a9-aecd-a91afc82cba7">
+
+
